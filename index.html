@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Videos - Proyecto 52</title>
+    <title>Proyecto 52 Semanas - Galería de Videos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url('https://www.example.com/tu-imagen-de-fondo.jpg'); /* Cambia esta URL por una imagen de IA */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         h1 {
             text-align: center;
             margin: 20px 0;
+            font-size: 2.5em;
+        }
+
+        .descripcion {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+            margin: 20px;
+            border-radius: 10px;
         }
 
         .mosaico {
@@ -25,9 +38,9 @@
         }
 
         .video {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
             padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             text-align: center;
         }
@@ -38,10 +51,21 @@
             border: none;
             border-radius: 8px;
         }
+
+        .autor {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
-    <h1>Galería de Videos - Proyecto 52</h1>
+    <h1>Proyecto 52 Semanas - Inteligencia Artificial</h1>
+    
+    <div class="descripcion">
+        <p>Este proyecto documenta un desafío de 52 semanas donde exploramos los avances y aplicaciones de la inteligencia artificial a través de videos semanales. Cada video cubre un aspecto clave de la IA, incluyendo aprendizaje automático, redes neuronales, procesamiento de lenguaje natural y más.</p>
+    </div>
+
     <div class="mosaico">
         <div class="video">
             <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
@@ -59,6 +83,11 @@
             <iframe src="https://www.youtube.com/embed/VIDEO_ID4" allowfullscreen></iframe>
             <p>Descripción del video 4</p>
         </div>
+        <!-- Agrega más videos según sea necesario -->
+    </div>
+
+    <div class="autor">
+        <p>Autor: Persio Rafael Martinez Alvarado</p>
     </div>
 </body>
 </html>
