@@ -38,7 +38,7 @@
         }
 
         .video {
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+            background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
@@ -57,37 +57,45 @@
             margin: 40px 0;
             font-size: 1.2em;
         }
+
+        .contador {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 160, 122, 0.9); /* Color llamativo */
+            border-radius: 8px;
+            margin: 20px;
+            font-size: 1.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #countdown {
+            font-size: 2em;
+            color: #ff5722; /* Color más llamativo para el texto del contador */
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
     <h1><strong>Proyecto 52</strong>: Serie semanal para aprender sobre Datos</h1>
     
-<div class="descripcion">
-    <p>Proyecto 52 es un recorrido educativo desde las bases de datos hasta la inteligencia artificial. Cada semana se exploran temas clave para comprender cómo los datos impulsan soluciones avanzadas en IA.</p>
-    <p>El proyecto abarca desde la gestión de datos en sistemas relacionales y NoSQL, hasta la manipulación y análisis de datos con herramientas como SQL, Python y R.</p>
-    <p>Se exploran técnicas de minería de datos y aprendizaje automático para extraer patrones y crear modelos predictivos. Finalmente, el proyecto aborda los últimos avances en inteligencia artificial, como redes neuronales y procesamiento de lenguaje natural.</p>
-</div>
+    <div class="descripcion">
+        <p>Proyecto 52 es un recorrido educativo desde las bases de datos hasta la inteligencia artificial. Cada semana se exploran temas clave para comprender cómo los datos impulsan soluciones avanzadas en IA.</p>
+        <p>El proyecto abarca desde la gestión de datos en sistemas relacionales y NoSQL, hasta la manipulación y análisis de datos con herramientas como SQL, Python y R.</p>
+        <p>Se exploran técnicas de minería de datos y aprendizaje automático para extraer patrones y crear modelos predictivos. Finalmente, el proyecto aborda los últimos avances en inteligencia artificial, como redes neuronales y procesamiento de lenguaje natural.</p>
+    </div>
 
+    <!-- Contador regresivo -->
+    <div class="contador">
+        <p>Próximo video en:</p>
+        <div id="countdown">Cargando...</div>
+    </div>
+
+    <!-- Video -->
     <div class="mosaico">
-        <div class="video" style="background-color: rgba(255, 160, 122, 0.8); padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; text-align: center;">
+        <div class="video">
             <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
             <p>Descripción del video 1</p>
-        </div>
-        <div class="video" style="background-color: rgba(255, 160, 122, 0.8); padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; text-align: center;">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-            <p>Descripción del video 2</p>
-        </div>
-        <div class="video" style="background-color: rgba(255, 160, 122, 0.8); padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; text-align: center;">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID3" allowfullscreen></iframe>
-            <p>Descripción del video 3</p>
-        </div>
-        <div class="video" style="background-color: rgba(255, 160, 122, 0.8); padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; text-align: center;">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID4" allowfullscreen></iframe>
-            <p>Descripción del video 4</p>
-        </div>
-        <div class="video" style="background-color: rgba(255, 160, 122, 0.8); padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; text-align: center;">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID4" allowfullscreen></iframe>
-            <p>Descripción del video 5</p>
         </div>
     </div>
 
@@ -98,7 +106,38 @@
                  https://www.linkedin.com/in/pr-martinez/
             </a>
         </p>
-        
     </div>
+
+    <!-- Script del contador regresivo -->
+    <script>
+        // Fecha de destino para el contador (27 de octubre de 2024)
+        var countdownDate = new Date("Oct 27, 2024 00:00:00").getTime();
+
+        // Actualiza el contador cada 1 segundo
+        var x = setInterval(function() {
+
+            // Obtiene la fecha y hora actual
+            var now = new Date().getTime();
+
+            // Calcula la diferencia entre la fecha actual y la fecha de destino
+            var distance = countdownDate - now;
+
+            // Cálculos de días, horas, minutos y segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Muestra el resultado en el elemento con id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // Si la cuenta ha terminado, mostrar un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡El nuevo video ya está disponible!";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
