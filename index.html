@@ -5,105 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto 52 - Galería de Videos</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://raw.githubusercontent.com/mrprofe/Proyecto52/main/vecteezy_blue-artificial-intelligence-technology-background-hd_17744080.jpg');
-            background-size: cover;
-            background-position: center;
+        /* Estilos ya existentes */
+
+        /* Estilos para los iconos de redes sociales */
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
             color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5em;
+        .social-links img {
+            width: 40px;
+            height: 40px;
         }
-
-        .descripcion {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
-            margin: 20px;
-            border-radius: 10px;
-        }
-
-        .mosaico {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .video {
-            position: relative;
-            background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        /* Superposición para deshabilitar el video */
-        .video .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* Estilos del iframe */
-        iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-            border-radius: 8px;
-            filter: grayscale(100%); /* Efecto de video deshabilitado */
-        }
-
-        /* Título del video */
-        .video-title {
-            margin-top: 10px;
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #ffeb3b; /* Color amarillo llamativo */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .autor {
-            text-align: center;
-            margin: 40px 0;
-            font-size: 1.2em;
-        }
-
-        .contador {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 160, 122, 0.9); /* Color llamativo */
-            border-radius: 8px;
-            margin: 20px;
-            font-size: 1.5em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        #countdown {
-            font-size: 2em;
-            color: #ff5722; /* Color más llamativo para el texto del contador */
-            font-weight: bold;
-        }
-
     </style>
 </head>
 <body>
@@ -137,6 +57,16 @@
                  https://www.linkedin.com/in/pr-martinez/
             </a>
         </p>
+    </div>
+
+    <!-- Enlaces a redes sociales -->
+    <div class="social-links">
+        <a href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        </a>
+        <a href="https://www.linkedin.com/in/pr-martinez/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+        </a>
     </div>
 
     <!-- Script del contador regresivo -->
