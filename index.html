@@ -38,6 +38,7 @@
         }
 
         .video {
+            position: relative;
             background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -45,11 +46,40 @@
             text-align: center;
         }
 
+        /* Superposición para deshabilitar el video */
+        .video .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Estilos del iframe */
         iframe {
             width: 100%;
             height: 200px;
             border: none;
             border-radius: 8px;
+            filter: grayscale(100%); /* Efecto de video deshabilitado */
+        }
+
+        /* Título del video */
+        .video-title {
+            margin-top: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffeb3b; /* Color amarillo llamativo */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .autor {
@@ -91,11 +121,12 @@
         <div id="countdown">Cargando...</div>
     </div>
 
-    <!-- Video -->
+    <!-- Video deshabilitado -->
     <div class="mosaico">
         <div class="video">
             <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-            <p>Descripción del video 1</p>
+            <div class="overlay">Próximamente</div>
+            <p class="video-title">Semana 1: Introducción a las Bases de Datos: Tipos y Modelos (Relacional, NoSQL)</p>
         </div>
     </div>
 
