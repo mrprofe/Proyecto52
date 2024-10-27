@@ -65,12 +65,17 @@
         }
 
         /* Estilos del iframe */
-        iframe {
+        .video iframe {
             width: 100%;
             height: 200px;
             border: none;
             border-radius: 8px;
             filter: grayscale(100%); /* Efecto de video deshabilitado */
+        }
+
+        /* Estilo para el video habilitado */
+        .video.habilitado iframe {
+            filter: none; /* Sin filtro para video habilitado */
         }
 
         /* Título del video */
@@ -138,10 +143,9 @@
         <div id="countdown">Cargando...</div>
     </div>
 
-        <!-- Video habilitado -->
+    <!-- Video habilitado -->
     <div class="mosaico">
-        <div class="video">
-            <!--iframe src="https://www.youtube.com/watch?v=8E3lHhg3xOQ&list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf&index=2" allowfullscreen></iframe -->
+        <div class="video habilitado">
             <iframe src="https://www.youtube.com/embed/8E3lHhg3xOQ?list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf" allowfullscreen></iframe>
             <p class="video-title">Semana 1: Introducción a las Bases de Datos: Tipos y Modelos (Relacional, NoSQL)</p>
         </div>
@@ -170,7 +174,6 @@
         <a href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf" target="_blank">
              <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
         </a>
-
     </div>
 
     <!-- Script del contador regresivo -->
@@ -180,7 +183,6 @@
 
         // Actualiza el contador cada 1 segundo
         var x = setInterval(function() {
-
             // Obtiene la fecha y hora actual
             var now = new Date().getTime();
 
