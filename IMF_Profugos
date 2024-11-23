@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de imagen</title>
+</head>
+<body>
+    <h2>Captura tu foto</h2>
+    <video id="video" width="224" height="224" autoplay></video>
+    <canvas id="canvas" width="224" height="224" style="display:none;"></canvas>
+    <button id="capture">Capturar Foto</button>
+    <img id="photo" src="" alt="Foto capturada" />
+    <script>
+        // Acceder a la cámara
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                document.getElementById('video').srcObject = stream;
+            })
+            .catch(function (err) {
+                console.log("Error al acceder a la cámara: " + err);
+            });
+
+        // Capturar la imagen
+        document.getElementById('capture').onclick = function() {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            context.drawImage(document.getElementById('video'), 0, 0, 224, 224);
+            var dataUrl = canvas.toDataURL('image/png');
+            document.getElementById('photo').src = dataUrl;
+
+            // Aquí podrías enviar esta imagen a un servidor para predicción
+        };
+    </script>
+</body>
+</html>
