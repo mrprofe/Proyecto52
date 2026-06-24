@@ -1,1 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 52 - Galería de Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://raw.githubusercontent.com/mrprofe/Proyecto52/main/vecteezy_blue-artificial-intelligence-technology-background-hd_17744080.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
 
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+
+        .descripcion {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .mosaico {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .video {
+            position: relative;
+            background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Superposición para deshabilitar el video */
+        .video .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Estilos del iframe */
+        .video iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 8px;
+            filter: grayscale(100%); /* Efecto de video deshabilitado */
+        }
+
+        /* Estilo para el video habilitado */
+        .video.habilitado iframe {
+            filter: none; /* Sin filtro para video habilitado */
+        }
+
+        /* Título del video */
+        .video-title {
+            margin-top: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffeb3b; /* Color amarillo llamativo */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .autor {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.2em;
+        }
+
+        .contador {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 160, 122, 0.9); /* Color llamativo */
+            border-radius: 8px;
+            margin: 20px;
+            font-size: 1.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #countdown {
+            font-size: 2em;
+            color: #ff5722; /* Color más llamativo para el texto del contador */
+            font-weight: bold;
+        }
+
+        /* Estilos para los iconos de redes sociales */
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1><strong>Proyecto 52</strong>: Serie semanal para aprender sobre Datos</h1>
+    
+    <div class="descripcion">
+        <p>Proyecto 52 es un recorrido educativo desde las bases de datos hasta la inteligencia artificial. Cada semana se exploran temas clave para comprender cómo los datos impulsan soluciones avanzadas en IA.</p>
+        <p>El proyecto abarca desde la gestión de datos en sistemas relacionales y NoSQL, hasta la manipulación y análisis de datos con herramientas como SQL, Python y R.</p>
+        <p>Se exploran técnicas de minería de datos y aprendizaje automático para extraer patrones y crear modelos predictivos. Finalmente, el proyecto aborda los últimos avances en inteligencia artificial, como redes neuronales y procesamiento de lenguaje natural.</p>
+    </div>
+
+    <!-- Contador regresivo -->
+    <div class="contador">
+        <p>Próximo video en:</p>
+        <div id="countdown">Cargando...</div>
+    </div>
+
+    <div class="capitulo">
+        <h2>Capítulo 1: Fundamentos de Bases de Datos</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/8E3lHhg3xOQ" allowfullscreen></iframe>
+                <p class="video-title">Semana 1: Introducción a las Bases de Datos: Tipos y Modelos (Relacional, NoSQL)</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/xlvM_KSeIdc" allowfullscreen></iframe>
+                <p class="video-title">Semana 2: Modelado de Datos Relacional: Tablas, Claves, Relaciones</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/YAAKahrZFo8" allowfullscreen></iframe>
+                <p class="video-title">Semana 3: SQL Básico: SELECT, INSERT, UPDATE, DELETE</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/XXjWrtJP82A" allowfullscreen></iframe>
+                <p class="video-title">Semana 4: Optimización de Consultas SQL y Normalización</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 2: Bases de Datos Avanzadas</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/YyWAdLfeaLI" allowfullscreen></iframe>
+                <p class="video-title">Semana 5: Índices, Vistas y Procedimientos Almacenados</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/tdPNNWi57zk" allowfullscreen></iframe>
+                <p class="video-title">Semana 6: Transacciones, Control de Concurrencia y Bloqueos</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/sD8xBAubyYQ" allowfullscreen></iframe>
+                <p class="video-title">Semana 7: Introducción a NoSQL: MongoDB (Documental), Neo4J (Grafos) </p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/GG_G1K8yVs4" allowfullscreen></iframe>
+                <p class="video-title">Semana 8: Introducción a NoSQL: Redis (Llave-Valor), DB4O (Objetos)</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 3: Introducción a la Programación para Ciencia de Datos</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/QqqFTQq2M1I" allowfullscreen></iframe>
+                <p class="video-title">Semana 9: Fundamentos de Python para Ciencia de Datos</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/eeCV8BQAFq0" allowfullscreen></iframe>
+                <p class="video-title">Semana 10: Manipulación de Datos con Pandas</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/hl4RCYHb4aY" allowfullscreen></iframe>
+                <p class="video-title">Semana 11: Visualización de Datos con Matplotlib y Seaborn</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/pOvNlvrp-YY" allowfullscreen></iframe>
+                <p class="video-title">Semana 12: Introducción a R para Ciencia de Datos</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 4: Estadística y Probabilidad</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/AJEnlETiVcg" allowfullscreen></iframe>
+                <p class="video-title">Semana 13: Fundamentos de Estadística Descriptiva</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/HRX1PCufa0I" allowfullscreen></iframe>
+                <p class="video-title">Semana 14: Probabilidad y Distribuciones</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/TA5h0sctYdA" allowfullscreen></iframe>
+                <p class="video-title">Semana 15: Pruebas de Hipótesis y Significancia Estadística</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/x5bSe-Rzh00" allowfullscreen></iframe>
+                <p class="video-title">Semana 16: Regresión Lineal Básica</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 5: Ingeniería de Datos</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/za6O9YoFiE8" allowfullscreen></iframe>
+                <p class="video-title">Semana 17: Introducción a la Ingeniería de Datos</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/mDQ_gS5ZS7Y" allowfullscreen></iframe>
+                <p class="video-title">Semana 18: ETL: Extracción, Transformación y Carga</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/qI2abwyOGGQ" allowfullscreen></iframe>
+                <p class="video-title">Semana 19: Modelos de Almacenamiento de Datos: Data Warehousing</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/Eb2gJ2Rqyh4" allowfullscreen></iframe>
+                <p class="video-title">Semana 20: Herramientas y Plataformas para Procesamiento de Datos (Cloudera, Spark)</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 6: Machine Learning Básico</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/zogoiaPpGqw" allowfullscreen></iframe>
+                <p class="video-title">Semana 21: Introducción a Machine Learning</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/HiukRJnYC7o" allowfullscreen></iframe>
+                <p class="video-title">Semana 22: Algoritmos de Clasificación: KNN, SVM</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/fPF-q_Hgevk" allowfullscreen></iframe>
+                <p class="video-title">Semana 23: Algoritmos de Regresión: Regresión Lineal, Regresión Logística</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/X38BT0hIZmo" allowfullscreen></iframe>
+                <p class="video-title">Semana 24: Introducción a la Validación Cruzada y Overfitting</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 7: Machine Learning Avanzado</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/JfMOt_kTc8g" allowfullscreen></iframe>
+                <p class="video-title">Semana 25: Árboles de Decisión y Random Forest</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/W3tb1wWd7nw" allowfullscreen></iframe>
+                <p class="video-title">Semana 26: Clustering: K-means, DBSCAN</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/ONcS9s3onb4" allowfullscreen></iframe>
+                <p class="video-title">Semana 27: Reducción de Dimensionalidad: PCA, t-SNE</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/d5p-qNIB04c" allowfullscreen></iframe>
+                <p class="video-title">Semana 28: Modelos Ensamblados: Bagging, Boosting</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 8: Deep Learning</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/iiEXf-XxQvo" allowfullscreen></iframe>
+                <p class="video-title">Semana 29: Introducción a Redes Neuronales</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/WQ-UdEYPjd8" allowfullscreen></iframe>
+                <p class="video-title">Semana 30: Redes Neuronales Profundas con Keras y TensorFlow</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/emJZrkeqgUQ" allowfullscreen></iframe>
+                <p class="video-title">Semana 31: Convolutional Neural Networks (CNNs)</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/OOCv74BMijk" allowfullscreen></iframe>
+                <p class="video-title">Semana 32: Redes Neuronales Recurrentes (RNNs) y LSTM</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 9: Procesamiento de Lenguaje Natural (NLP)</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/X5KImcsxrCY" allowfullscreen></iframe>
+                <p class="video-title">Semana 33: Fundamentos de Procesamiento de Lenguaje Natural</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/TIgDj-ddZ1Y" allowfullscreen></iframe>
+                <p class="video-title">Semana 34: Tokenización y Bag of Words</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/Von-R2uDJSQ" allowfullscreen></iframe>
+                <p class="video-title">Semana 35: Modelos de Lenguaje: Word2Vec, GloVe</p>
+            </div>
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/IgQvc5XMUk8" allowfullscreen></iframe>
+                <p class="video-title">Semana 36: Introducción a Transformers y BERT</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 10: Inteligencia Artificial</h2>
+        <div class="mosaico">
+            <div class="video habilitado">
+                <iframe src="https://www.youtube.com/embed/Qn4OwmDB4OA" allowfullscreen></iframe>
+                <p class="video-title">Semana 37: Definición y Fundamentos de IA</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 38: Agentes Inteligentes y Toma de Decisiones</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 39: IA para Juegos: Algoritmos Minimax, Alpha-Beta Pruning</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 40: Ética y Futuro de la IA</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 11: Visión por Computadora</h2>
+        <div class="mosaico">
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 41: Introducción a la Visión por Computadora</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 42: Procesamiento de Imágenes con OpenCV</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 43: Detección de Objetos y Segmentación de Imágenes</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 44: Aplicaciones de Visión por Computadora: OCR, Detección de Rostros</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 12: Inteligencia Artificial Avanzada</h2>
+        <div class="mosaico">
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 45: Reinforcement Learning: Introducción y Fundamentos</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 46: Q-Learning y Deep Q-Learning</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 47: Generative Adversarial Networks (GANs)</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 48: IA Explicable y Modelos Interpretables</p>
+            </div>
+        </div>
+
+        <h2>Capítulo 13: Aplicaciones Prácticas de la IA</h2>
+        <div class="mosaico">
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 49: Aplicaciones en la Industria: IA en Finanzas</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 50: IA en la Medicina y Biotecnología</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 51: IA en la Logística y la Automatización</p>
+            </div>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
+                <div class="overlay">Próximamente</div>
+                <p class="video-title">Semana 52: Creación de Proyecto: Desde Datos hasta IA </p>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- Enlaces a redes sociales -->
+    <div class="social-links">
+        <a href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        </a>  
+        <a href="https://chat.whatsapp.com/GeoBYG30ymcKgDn4mIzd7h" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.linkedin.com/in/pr-martinez/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf" target="_blank">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+        </a>
+
+        <a href="https://www.instagram.com/proyecto52oficial/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+    </div>
+
+    <!-- Script del contador regresivo -->
+    <script>
+       
+        var countdownDate = new Date("Mar 24, 2026 12:00:00").getTime();
+
+        // Actualiza el contador cada 1 segundo
+        var x = setInterval(function() {
+            // Obtiene la fecha y hora actual
+            var now = new Date().getTime();
+
+            // Calcula la diferencia entre la fecha actual y la fecha de destino
+            var distance = countdownDate - now;
+
+            // Cálculos de días, horas, minutos y segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Muestra el resultado en el elemento con id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // Si la cuenta ha terminado, mostrar un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡El nuevo video ya está disponible!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
