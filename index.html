@@ -1,476 +1,347 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 52 - Galería de Videos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://raw.githubusercontent.com/mrprofe/Proyecto52/main/vecteezy_blue-artificial-intelligence-technology-background-hd_17744080.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5em;
-        }
-
-        .descripcion {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
-            margin: 20px;
-            border-radius: 10px;
-        }
-
-        .mosaico {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .video {
-            position: relative;
-            background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        /* Superposición para deshabilitar el video */
-        .video .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* Estilos del iframe */
-        .video iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-            border-radius: 8px;
-            filter: grayscale(100%); /* Efecto de video deshabilitado */
-        }
-
-        /* Estilo para el video habilitado */
-        .video.habilitado iframe {
-            filter: none; /* Sin filtro para video habilitado */
-        }
-
-        /* Título del video */
-        .video-title {
-            margin-top: 10px;
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #ffeb3b; /* Color amarillo llamativo */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .autor {
-            text-align: center;
-            margin: 40px 0;
-            font-size: 1.2em;
-        }
-
-        .contador {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 160, 122, 0.9); /* Color llamativo */
-            border-radius: 8px;
-            margin: 20px;
-            font-size: 1.5em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        #countdown {
-            font-size: 2em;
-            color: #ff5722; /* Color más llamativo para el texto del contador */
-            font-weight: bold;
-        }
-
-        /* Estilos para los iconos de redes sociales */
-        .social-links {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .social-links img {
-            width: 40px;
-            height: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto 52 | Datos, IA y aprendizaje continuo</title>
+  <meta name="description" content="Proyecto 52 es una serie semanal para aprender sobre datos, analítica e inteligencia artificial desde cero hasta aplicaciones avanzadas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1><strong>Proyecto 52</strong>: Serie semanal para aprender sobre Datos</h1>
-    
-    <div class="descripcion">
-        <p>Proyecto 52 es un recorrido educativo desde las bases de datos hasta la inteligencia artificial. Cada semana se exploran temas clave para comprender cómo los datos impulsan soluciones avanzadas en IA.</p>
-        <p>El proyecto abarca desde la gestión de datos en sistemas relacionales y NoSQL, hasta la manipulación y análisis de datos con herramientas como SQL, Python y R.</p>
-        <p>Se exploran técnicas de minería de datos y aprendizaje automático para extraer patrones y crear modelos predictivos. Finalmente, el proyecto aborda los últimos avances en inteligencia artificial, como redes neuronales y procesamiento de lenguaje natural.</p>
-    </div>
+  <div class="site-bg"></div>
 
-    <!-- Contador regresivo -->
-    <div class="contador">
-        <p>Próximo video en:</p>
-        <div id="countdown">Cargando...</div>
-    </div>
+  <header class="navbar">
+    <a href="#inicio" class="brand">
+      <img src="assets/logo-proyecto52.png" alt="Logo Proyecto 52" />
+      <span>Proyecto 52</span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#episodio-actual">Actual</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#empieza">Empieza aquí</a>
+      <a href="#ruta">Ruta</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#canales">Canales</a>
+      <a href="#site-actual">Galería</a>
+    </nav>
+  </header>
 
-    <div class="capitulo">
-        <h2>Capítulo 1: Fundamentos de Bases de Datos</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/8E3lHhg3xOQ" allowfullscreen></iframe>
-                <p class="video-title">Semana 1: Introducción a las Bases de Datos: Tipos y Modelos (Relacional, NoSQL)</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/xlvM_KSeIdc" allowfullscreen></iframe>
-                <p class="video-title">Semana 2: Modelado de Datos Relacional: Tablas, Claves, Relaciones</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/YAAKahrZFo8" allowfullscreen></iframe>
-                <p class="video-title">Semana 3: SQL Básico: SELECT, INSERT, UPDATE, DELETE</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/XXjWrtJP82A" allowfullscreen></iframe>
-                <p class="video-title">Semana 4: Optimización de Consultas SQL y Normalización</p>
-            </div>
+  <main>
+    <section id="inicio" class="hero section-pad">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Una serie semanal para aprender sobre datos</span>
+        <h1>De las Bases de Datos a la Inteligencia Artificial, explicado paso a paso.</h1>
+        <p>
+          Proyecto 52 es un recorrido educativo diseñado para entender cómo los datos se convierten en conocimiento, modelos, decisiones y soluciones inteligentes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#catalogo">Explorar capítulos</a>
+          <a class="btn secondary" href="https://www.youtube.com/@proyecto52" target="_blank" rel="noopener">Ver canal</a>
         </div>
-
-        <h2>Capítulo 2: Bases de Datos Avanzadas</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/YyWAdLfeaLI" allowfullscreen></iframe>
-                <p class="video-title">Semana 5: Índices, Vistas y Procedimientos Almacenados</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/tdPNNWi57zk" allowfullscreen></iframe>
-                <p class="video-title">Semana 6: Transacciones, Control de Concurrencia y Bloqueos</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/sD8xBAubyYQ" allowfullscreen></iframe>
-                <p class="video-title">Semana 7: Introducción a NoSQL: MongoDB (Documental), Neo4J (Grafos) </p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/GG_G1K8yVs4" allowfullscreen></iframe>
-                <p class="video-title">Semana 8: Introducción a NoSQL: Redis (Llave-Valor), DB4O (Objetos)</p>
-            </div>
+        <div class="stats-grid">
+          <div><strong>52</strong><span>semanas de aprendizaje</span></div>
+          <div><strong>13</strong><span>capítulos temáticos</span></div>
+          <div><strong>Ruta</strong><span>de datos a inteligencia artificial</span></div>
         </div>
+      </div>
+      <div class="hero-card reveal delay-1">
+        <img src="assets/logo-proyecto52.png" alt="Proyecto 52" />
+        <div class="orb orb-blue"></div>
+        <div class="orb orb-orange"></div>
+      </div>
+    </section>
 
-        <h2>Capítulo 3: Introducción a la Programación para Ciencia de Datos</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/QqqFTQq2M1I" allowfullscreen></iframe>
-                <p class="video-title">Semana 9: Fundamentos de Python para Ciencia de Datos</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/eeCV8BQAFq0" allowfullscreen></iframe>
-                <p class="video-title">Semana 10: Manipulación de Datos con Pandas</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/hl4RCYHb4aY" allowfullscreen></iframe>
-                <p class="video-title">Semana 11: Visualización de Datos con Matplotlib y Seaborn</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/pOvNlvrp-YY" allowfullscreen></iframe>
-                <p class="video-title">Semana 12: Introducción a R para Ciencia de Datos</p>
-            </div>
+    <section class="intro-strip reveal">
+      <p><strong>Aprende con una ruta clara:</strong> SQL, Python, analítica, minería de datos, machine learning, deep learning, PLN, transformers, agentes inteligentes y toma de decisiones.</p>
+    </section>
+
+    <section id="episodio-actual" class="section-pad current-episode-section">
+      <div class="episode-spotlight reveal">
+        <div class="episode-copy">
+          <span class="eyebrow">Episodio actual</span>
+          <!-- Edita estos datos cada semana -->
+          <h2>Capítulo 10 · Inteligencia Artificial</h2>
+          <h3>Definición y Fundamentos de IA</h3>
+          <p>
+            Esta semana iniciamos el Capítulo 10 entrando a los fundamentos de la Inteligencia Artificial: qué es, cómo ha evolucionado, qué problemas busca resolver y por qué se ha convertido en una de las tecnologías más importantes de nuestro tiempo. Antes de hablar de agentes, modelos avanzados o automatización, primero vamos a construir la base para entender realmente qué hay detrás de la IA.
+          </p>
+          <div class="episode-meta">
+            <span>🔥 Capítulo en llamas</span>
+            <span>Domingo 21 de junio</span>
+            <span>60 minutos</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://www.youtube.com/watch?v=Qn4OwmDB4OA" target="_blank" rel="noopener">Ver episodio</a>
+            <a class="btn secondary" href="#canales">Unirme a la comunidad</a>
+          </div>
         </div>
-
-        <h2>Capítulo 4: Estadística y Probabilidad</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/AJEnlETiVcg" allowfullscreen></iframe>
-                <p class="video-title">Semana 13: Fundamentos de Estadística Descriptiva</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/HRX1PCufa0I" allowfullscreen></iframe>
-                <p class="video-title">Semana 14: Probabilidad y Distribuciones</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/TA5h0sctYdA" allowfullscreen></iframe>
-                <p class="video-title">Semana 15: Pruebas de Hipótesis y Significancia Estadística</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/x5bSe-Rzh00" allowfullscreen></iframe>
-                <p class="video-title">Semana 16: Regresión Lineal Básica</p>
-            </div>
+        <div class="episode-flame" aria-hidden="true">
+          <span>10</span>
+          <i></i><i></i><i></i>
         </div>
+      </div>
+    </section>
 
-        <h2>Capítulo 5: Ingeniería de Datos</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/za6O9YoFiE8" allowfullscreen></iframe>
-                <p class="video-title">Semana 17: Introducción a la Ingeniería de Datos</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/mDQ_gS5ZS7Y" allowfullscreen></iframe>
-                <p class="video-title">Semana 18: ETL: Extracción, Transformación y Carga</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/qI2abwyOGGQ" allowfullscreen></iframe>
-                <p class="video-title">Semana 19: Modelos de Almacenamiento de Datos: Data Warehousing</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/Eb2gJ2Rqyh4" allowfullscreen></iframe>
-                <p class="video-title">Semana 20: Herramientas y Plataformas para Procesamiento de Datos (Cloudera, Spark)</p>
-            </div>
+    <section id="avance" class="section-pad progress-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Avance del proyecto</span>
+        <h2>Una ruta viva, semana tras semana</h2>
+        <p>Cada episodio suma una pieza más a esta ruta de aprendizaje continuo en datos, analítica e inteligencia artificial.</p>
+      </div>
+      <div class="progress-wrap reveal delay-1">
+        <div class="progress-bar" aria-label="Progreso del Proyecto 52">
+          <span style="width: 71%"></span>
         </div>
-
-        <h2>Capítulo 6: Machine Learning Básico</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/zogoiaPpGqw" allowfullscreen></iframe>
-                <p class="video-title">Semana 21: Introducción a Machine Learning</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/HiukRJnYC7o" allowfullscreen></iframe>
-                <p class="video-title">Semana 22: Algoritmos de Clasificación: KNN, SVM</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/fPF-q_Hgevk" allowfullscreen></iframe>
-                <p class="video-title">Semana 23: Algoritmos de Regresión: Regresión Lineal, Regresión Logística</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/X38BT0hIZmo" allowfullscreen></iframe>
-                <p class="video-title">Semana 24: Introducción a la Validación Cruzada y Overfitting</p>
-            </div>
+        <div class="progress-stats">
+          <div><strong>37 / 52</strong><span>episodios publicados</span></div>
+          <div><strong>10 / 13</strong><span>capítulo actual</span></div>
+          <div><strong>71%</strong><span>recorrido completado</span></div>
         </div>
+      </div>
+    </section>
 
-        <h2>Capítulo 7: Machine Learning Avanzado</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/JfMOt_kTc8g" allowfullscreen></iframe>
-                <p class="video-title">Semana 25: Árboles de Decisión y Random Forest</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/W3tb1wWd7nw" allowfullscreen></iframe>
-                <p class="video-title">Semana 26: Clustering: K-means, DBSCAN</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/ONcS9s3onb4" allowfullscreen></iframe>
-                <p class="video-title">Semana 27: Reducción de Dimensionalidad: PCA, t-SNE</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/d5p-qNIB04c" allowfullscreen></iframe>
-                <p class="video-title">Semana 28: Modelos Ensamblados: Bagging, Boosting</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 8: Deep Learning</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/iiEXf-XxQvo" allowfullscreen></iframe>
-                <p class="video-title">Semana 29: Introducción a Redes Neuronales</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/WQ-UdEYPjd8" allowfullscreen></iframe>
-                <p class="video-title">Semana 30: Redes Neuronales Profundas con Keras y TensorFlow</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/emJZrkeqgUQ" allowfullscreen></iframe>
-                <p class="video-title">Semana 31: Convolutional Neural Networks (CNNs)</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/OOCv74BMijk" allowfullscreen></iframe>
-                <p class="video-title">Semana 32: Redes Neuronales Recurrentes (RNNs) y LSTM</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 9: Procesamiento de Lenguaje Natural (NLP)</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/X5KImcsxrCY" allowfullscreen></iframe>
-                <p class="video-title">Semana 33: Fundamentos de Procesamiento de Lenguaje Natural</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/TIgDj-ddZ1Y" allowfullscreen></iframe>
-                <p class="video-title">Semana 34: Tokenización y Bag of Words</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/Von-R2uDJSQ" allowfullscreen></iframe>
-                <p class="video-title">Semana 35: Modelos de Lenguaje: Word2Vec, GloVe</p>
-            </div>
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/IgQvc5XMUk8" allowfullscreen></iframe>
-                <p class="video-title">Semana 36: Introducción a Transformers y BERT</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 10: Inteligencia Artificial</h2>
-        <div class="mosaico">
-            <div class="video habilitado">
-                <iframe src="https://www.youtube.com/embed/Qn4OwmDB4OA" allowfullscreen></iframe>
-                <p class="video-title">Semana 37: Definición y Fundamentos de IA</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 38: Agentes Inteligentes y Toma de Decisiones</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 39: IA para Juegos: Algoritmos Minimax, Alpha-Beta Pruning</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 40: Ética y Futuro de la IA</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 11: Visión por Computadora</h2>
-        <div class="mosaico">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 41: Introducción a la Visión por Computadora</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 42: Procesamiento de Imágenes con OpenCV</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 43: Detección de Objetos y Segmentación de Imágenes</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 44: Aplicaciones de Visión por Computadora: OCR, Detección de Rostros</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 12: Inteligencia Artificial Avanzada</h2>
-        <div class="mosaico">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 45: Reinforcement Learning: Introducción y Fundamentos</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 46: Q-Learning y Deep Q-Learning</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 47: Generative Adversarial Networks (GANs)</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 48: IA Explicable y Modelos Interpretables</p>
-            </div>
-        </div>
-
-        <h2>Capítulo 13: Aplicaciones Prácticas de la IA</h2>
-        <div class="mosaico">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 49: Aplicaciones en la Industria: IA en Finanzas</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 50: IA en la Medicina y Biotecnología</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 51: IA en la Logística y la Automatización</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-                <div class="overlay">Próximamente</div>
-                <p class="video-title">Semana 52: Creación de Proyecto: Desde Datos hasta IA </p>
-            </div>
-        </div>
-
-        
-    </div>
-
-    <!-- Enlaces a redes sociales -->
-    <div class="social-links">
-        <a href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-        </a>  
-        <a href="https://chat.whatsapp.com/GeoBYG30ymcKgDn4mIzd7h" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <section id="ultimos" class="section-pad latest-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Últimos episodios</span>
+        <h2>Lo más reciente del recorrido</h2>
+      </div>
+      <div class="latest-grid">
+		<div class="latest-card reveal locked-card">
+		  <span>Próximamente</span>
+		  <h3>Agentes Inteligentes y Toma de Decisiones</h3>
+		  <p>Cómo los agentes perciben, deciden y actúan para resolver tareas.</p>
+		</div>
+        <a class="latest-card reveal" href="https://www.youtube.com/watch?v=Qn4OwmDB4OA" target="_blank" rel="noopener">
+          <span>Anterior</span>
+          <h3>Definición y Fundamentos de IA</h3>
+          <p>Qué es realmente la inteligencia artificial y cómo se diferencia de otras tecnologías.</p>
         </a>
-        <a href="https://www.linkedin.com/in/pr-martinez/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+        <a class="latest-card reveal" href="https://www.youtube.com/watch?v=IgQvc5XMUk8" target="_blank" rel="noopener">
+          <span>Recomendado</span>
+          <h3>Transformers y BERT</h3>
+          <p>La base moderna detrás de muchos modelos de lenguaje actuales.</p>
         </a>
-        <a href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf" target="_blank">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
-        </a>
+      </div>
+    </section>
 
-        <a href="https://www.instagram.com/proyecto52oficial/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <section id="sobre-mi" class="section-pad two-col">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Sobre el creador</span>
+        <h2>Hola, soy Persio Martínez.</h2>
+      </div>
+      <div class="text-card reveal delay-1">
+        <p>
+          Proyecto 52 nace con una idea simple: compartir conocimiento de datos e inteligencia artificial de forma constante, práctica y entendible. Cada episodio conecta teoría, ejemplos y aplicaciones reales para que más profesionales puedan comprender el valor de los datos.
+        </p>
+        <p>
+          La meta no es solo aprender herramientas, sino desarrollar criterio para tomar mejores decisiones con datos.
+        </p>
+        <a class="inline-link" href="https://www.linkedin.com/in/pr-martinez/" target="_blank" rel="noopener">Conecta conmigo en LinkedIn →</a>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section-pad">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Catálogo</span>
+        <h2>Los 13 capítulos del proyecto</h2>
+        <p>Recorre la ruta completa de Proyecto 52, desde los fundamentos de los datos hasta la inteligencia artificial. Cada capítulo agrupa una etapa del aprendizaje y te lleva directamente a su playlist en YouTube.</p>
+      </div>
+
+      <!-- Para marcar el capítulo actual, mueve la clase "current-chapter" a la tarjeta correspondiente. -->
+      <div class="catalog-grid">
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r84_1sAwTVc0a_OTXl3DOswv" target="_blank" rel="noopener"><span>01</span><h3>Bases de Datos desde Cero (Analítica y SQL)</h3><p>Fundamentos de bases de datos, conceptos esenciales, introducción a SQL y primeros pasos para analizar información.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r84GZd0WAEk7FktpuHJzaWbo" target="_blank" rel="noopener"><span>02</span><h3>Bases de Datos Avanzadas (SQL, Transacciones y NoSQL)</h3><p>Consultas avanzadas, transacciones, integridad de datos, optimización básica y fundamentos de bases de datos NoSQL.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87uCPFGVpoqSpi69VMXofmR" target="_blank" rel="noopener"><span>03</span><h3>Programación para Ciencia de Datos (Python, Pandas y R)</h3><p>Programación aplicada al análisis de datos usando Python, Pandas y R para limpiar, transformar y explorar información.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r86a7zeoNpl_xYcHjLKUhJHE" target="_blank" rel="noopener"><span>04</span><h3>Estadística Aplicada para Ciencia de Datos</h3><p>Conceptos estadísticos clave para interpretar datos, medir patrones, analizar variabilidad y tomar mejores decisiones.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r84PF7MvFTCp9_rayvHRWimw" target="_blank" rel="noopener"><span>05</span><h3>Ingeniería de Datos</h3><p>Procesos, pipelines, integración, transformación y preparación de datos para construir soluciones analíticas confiables.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87lvVGgt9RBsAWpe9fMmlR7" target="_blank" rel="noopener"><span>06</span><h3>Machine Learning</h3><p>Introducción al aprendizaje automático, modelos supervisados y no supervisados, entrenamiento, evaluación y predicción.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87AJe1EqoDzT9ta1xLoy1ZP" target="_blank" rel="noopener"><span>07</span><h3>Machine Learning Avanzado: Árboles, Clustering y Ensambles</h3><p>Árboles de decisión, clustering, modelos de ensamble y técnicas avanzadas para mejorar el desempeño predictivo.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r86WwP6Ye5-YZbMiM0w2BouW" target="_blank" rel="noopener"><span>08</span><h3>Redes Neuronales y Deep Learning</h3><p>Fundamentos de redes neuronales, entrenamiento profundo, CNN, RNN y arquitecturas modernas aplicadas a datos complejos.</p></a>
+        <a class="course-card reveal" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87_z8KmM3yEszXEg1n5UQcp" target="_blank" rel="noopener"><span>09</span><h3>Procesamiento de Lenguaje Natural</h3><p>Análisis de texto, embeddings, modelos de lenguaje, transformers, BERT y evolución hacia los LLMs modernos.</p></a>
+        <a class="course-card reveal current-chapter" href="https://www.youtube.com/playlist?list=PL0b8WvDs4r86CgJxeBwrXBIAn9gndN2zC" target="_blank" rel="noopener"><span>10</span><h3>Inteligencia Artificial</h3><p>Fundamentos, agentes inteligentes, toma de decisiones y aplicaciones reales.</p></a>
+      </div>
+    </section>
+
+
+    <section id="empieza" class="section-pad start-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">¿Por dónde empiezo?</span>
+        <h2>Elige tu entrada al Proyecto 52</h2>
+        <p>No todos llegan con el mismo nivel. Por eso la ruta puede recorrerse desde diferentes puntos.</p>
+      </div>
+      <div class="start-grid">
+        <a class="start-card reveal" href="https://www.youtube.com/watch?v=8E3lHhg3xOQ">
+          <strong>Soy principiante</strong>
+          <p>Empieza por fundamentos de datos, bases de datos, SQL y Python.</p>
         </a>
+        <a class="start-card reveal" href="https://www.youtube.com/watch?v=QqqFTQq2M1I">
+          <strong>Ya manejo datos</strong>
+          <p>Ve directo a analítica, visualización, minería de datos y machine learning.</p>
+        </a>
+        <a class="start-card reveal" href="https://www.youtube.com/watch?v=X5KImcsxrCY">
+          <strong>Me interesa la IA</strong>
+          <p>Comienza por NLP, transformers, fundamentos de IA, agentes y decisiones inteligentes.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="ruta" class="section-pad route-section">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Ruta 52</span>
+        <h2>Aprendizaje por etapas</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal"><b>1</b><div><h3>Entender los datos</h3><p>De dónde vienen, cómo se organizan y por qué son la materia prima de la IA.</p></div></div>
+        <div class="timeline-item reveal"><b>2</b><div><h3>Preparar y analizar</h3><p>Uso de SQL, Python, R y visualización para convertir datos en información.</p></div></div>
+        <div class="timeline-item reveal"><b>3</b><div><h3>Modelar y predecir</h3><p>Aplicación de machine learning y deep learning para resolver problemas reales.</p></div></div>
+        <div class="timeline-item reveal"><b>4</b><div><h3>Construir soluciones inteligentes</h3><p>IA generativa, agentes, automatización y toma de decisiones basada en datos.</p></div></div>
+      </div>
+    </section>
+
+    <section id="recursos" class="section-pad">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Recursos</span>
+        <h2>Material para seguir aprendiendo</h2>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card reveal" href="https://www.youtube.com/@proyecto52" target="_blank" rel="noopener"><h3>Canal de YouTube</h3><p>Episodios completos y listas por capítulo.</p></a>
+        <a class="resource-card reveal" href="https://1drv.ms/f/c/da2539b18aa07fa9/IgAQF5bngM-iRL2r03drARwIAYf0ek8NO1gmkPkHrlTFkbE?e=8GklvQ"><h3>Guías y apuntes</h3><p>Material complementario para cada tema.</p></a>
+        <a class="resource-card reveal" href="https://1drv.ms/f/c/da2539b18aa07fa9/IgAQF5bngM-iRL2r03drARwIAYf0ek8NO1gmkPkHrlTFkbE?e=8GklvQ"><h3>Ejercicios prácticos</h3><p>Retos con SQL, Python, ML e IA.</p></a>
+        <a class="resource-card reveal" href="#canales"><h3>Comunidad</h3><p>Espacio para preguntas, ideas y próximos temas.</p></a>
+      </div>
+    </section>
+
+
+    <section id="impacto" class="section-pad impact-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Proyecto 52 en números</span>
+        <h2>Una iniciativa para aprender, compartir y crecer</h2>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card reveal"><strong>52</strong><span>episodios</span></div>
+        <div class="impact-card reveal"><strong>13</strong><span>capítulos</span></div>
+        <div class="impact-card reveal"><strong>1</strong><span>ruta completa</span></div>
+        <div class="impact-card reveal"><strong>∞</strong><span>ganas de aprender</span></div>
+      </div>
+    </section>
+
+    <section id="libro" class="section-pad book-section">
+      <div class="book-card reveal">
+        <div>
+          <span class="eyebrow">Libro Proyecto 52</span>
+          <h2>El recorrido completo en formato ebook</h2>
+          <p>
+            Una versión organizada del proyecto con explicaciones, ejemplos, ejercicios y recursos complementarios.
+          </p>
+          <div class="hero-actions">
+			<span class="btn primary disabled-btn">Próximamente</span>
+            <a class="btn secondary" href="#recursos">Explorar recursos</a>
+          </div>
+        </div>
+        <div class="book-cover-mini">
+          <img src="assets/logo-proyecto52.png" alt="Libro Proyecto 52" />
+          <span>ebook</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonios" class="section-pad testimonials-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Comunidad</span>
+        <h2>Lo que representa Proyecto 52</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal"><p>“Una forma clara de entender temas que muchas veces parecen complicados.”</p><strong>Comunidad Proyecto 52</strong></div>
+        <div class="testimonial-card reveal"><p>“Cada episodio conecta teoría, práctica y criterio para usar mejor los datos.”</p><strong>Aprendizaje continuo</strong></div>
+        <div class="testimonial-card reveal"><p>“Un espacio para aprender datos e inteligencia artificial sin perderse en tecnicismos.”</p><strong>Datos para todos</strong></div>
+      </div>
+    </section>
+
+    <section id="canales" class="section-pad channels-section">
+      <div class="section-heading center reveal">
+        <span class="eyebrow">Canales oficiales</span>
+        <h2>Únete a la comunidad</h2>
+        <p>Conecta con la comunidad del Proyecto 52 y recibe avisos, recursos, episodios y novedades desde el canal que prefieras.</p>
+      </div>
+      <div class="channel-grid">
+		<a class="channel-card reveal whatsapp" href="https://chat.whatsapp.com/GeoBYG30ymcKgDn4mIzd7h" target="_blank" rel="noopener">
+		  <div class="channel-icon">
+			<svg viewBox="0 0 32 32" aria-hidden="true">
+			  <path d="M16.04 3C9.44 3 4.08 8.36 4.08 14.96c0 2.1.55 4.15 1.6 5.96L4 29l8.28-1.63a11.9 11.9 0 0 0 3.76.6C22.64 27.97 28 22.6 28 16S22.64 3 16.04 3Zm0 22.85c-1.2 0-2.38-.2-3.5-.6l-.5-.18-4.9.96.98-4.78-.25-.52a9.73 9.73 0 0 1-1.14-4.57c0-5.37 4.37-9.74 9.74-9.74s9.74 4.37 9.74 9.74-4.37 9.69-9.74 9.69Zm5.34-7.28c-.29-.14-1.7-.84-1.97-.94-.26-.1-.46-.14-.65.15-.19.28-.75.94-.92 1.13-.17.19-.34.21-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49h-.55c-.19 0-.5.07-.77.36-.26.29-1 1-1 2.43s1.03 2.81 1.18 3c.14.19 2.03 3.1 4.93 4.35.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33Z"/>
+			</svg>
+		  </div>
+		  <strong>WhatsApp</strong>
+		  <span>Comunidad y avisos rápidos</span>
+		</a>
+
+		<a class="channel-card reveal telegram" href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank" rel="noopener">
+		  <div class="channel-icon">
+			<svg viewBox="0 0 32 32" aria-hidden="true">
+			  <path d="M28.1 5.1 4.65 14.16c-1.6.64-1.59 1.53-.29 1.93l6.02 1.88 2.3 7.05c.3.84.15 1.17 1.03 1.17.67 0 .97-.31 1.35-.67l3.25-3.16 6.76 4.99c1.24.68 2.14.33 2.45-1.15L31.95 6.7c.45-1.8-.69-2.62-1.85-1.6Zm-5.43 4.72-10.9 9.83-.42 4.48-1.73-5.64 13.05-8.67Z"/>
+			</svg>
+		  </div>
+		  <strong>Telegram</strong>
+		  <span>Recursos, recordatorios y novedades</span>
+		</a>
+
+		<a class="channel-card reveal instagram" href="https://www.instagram.com/proyecto52oficial/" target="_blank" rel="noopener">
+		  <div class="channel-icon">
+			<svg viewBox="0 0 32 32" aria-hidden="true">
+			  <path d="M10.2 3h11.6A7.2 7.2 0 0 1 29 10.2v11.6A7.2 7.2 0 0 1 21.8 29H10.2A7.2 7.2 0 0 1 3 21.8V10.2A7.2 7.2 0 0 1 10.2 3Zm0 2.6a4.6 4.6 0 0 0-4.6 4.6v11.6a4.6 4.6 0 0 0 4.6 4.6h11.6a4.6 4.6 0 0 0 4.6-4.6V10.2a4.6 4.6 0 0 0-4.6-4.6H10.2Zm5.8 5.4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm6.1-3.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/>
+			</svg>
+		  </div>
+		  <strong>Instagram</strong>
+		  <span>Clips, frases, carruseles y anuncios</span>
+		</a>
+      </div>
+    </section>
+
+    <section id="site-actual" class="section-pad site-link-section">
+      <div class="site-link-card reveal">
+        <div>
+          <span class="eyebrow">Galería</span>
+          <h2>Accede a la Galería del proyecto</h2>
+          <p>Explora la galería del Proyecto 52: un espacio visual para revivir episodios, descubrir recursos y seguir la evolución de esta ruta desde los datos hasta la inteligencia artificial..</p>
+        </div>
+        <a class="btn primary" href="https://mrprofe.github.io/Proyecto52/" target="_blank" rel="noopener">Ir a la Galería</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <img src="assets/logo-proyecto52.png" alt="Proyecto 52" />
+      <p>Proyecto 52 · Datos, Analítica e Inteligencia Artificial</p>
     </div>
+    <a href="#inicio">Volver arriba ↑</a>
+  </footer>
 
-    <!-- Script del contador regresivo -->
-    <script>
-       
-        var countdownDate = new Date("Mar 24, 2026 12:00:00").getTime();
+  <div class="floating-social" aria-label="Accesos rápidos">
+	<a href="https://chat.whatsapp.com/GeoBYG30ymcKgDn4mIzd7h" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+	  <svg viewBox="0 0 32 32" aria-hidden="true">
+		<path d="M16.04 3C9.44 3 4.08 8.36 4.08 14.96c0 2.1.55 4.15 1.6 5.96L4 29l8.28-1.63a11.9 11.9 0 0 0 3.76.6C22.64 27.97 28 22.6 28 16S22.64 3 16.04 3Zm0 22.85c-1.2 0-2.38-.2-3.5-.6l-.5-.18-4.9.96.98-4.78-.25-.52a9.73 9.73 0 0 1-1.14-4.57c0-5.37 4.37-9.74 9.74-9.74s9.74 4.37 9.74 9.74-4.37 9.69-9.74 9.69Zm5.34-7.28c-.29-.14-1.7-.84-1.97-.94-.26-.1-.46-.14-.65.15-.19.28-.75.94-.92 1.13-.17.19-.34.21-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49h-.55c-.19 0-.5.07-.77.36-.26.29-1 1-1 2.43s1.03 2.81 1.18 3c.14.19 2.03 3.1 4.93 4.35.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33Z"/>
+	  </svg>
+	</a>
 
-        // Actualiza el contador cada 1 segundo
-        var x = setInterval(function() {
-            // Obtiene la fecha y hora actual
-            var now = new Date().getTime();
+	<a href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">
+	  <svg viewBox="0 0 32 32" aria-hidden="true">
+		<path d="M28.1 5.1 4.65 14.16c-1.6.64-1.59 1.53-.29 1.93l6.02 1.88 2.3 7.05c.3.84.15 1.17 1.03 1.17.67 0 .97-.31 1.35-.67l3.25-3.16 6.76 4.99c1.24.68 2.14.33 2.45-1.15L31.95 6.7c.45-1.8-.69-2.62-1.85-1.6Zm-5.43 4.72-10.9 9.83-.42 4.48-1.73-5.64 13.05-8.67Z"/>
+	  </svg>
+	</a>
 
-            // Calcula la diferencia entre la fecha actual y la fecha de destino
-            var distance = countdownDate - now;
+	<a href="https://www.youtube.com/@proyecto52" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+	  <svg viewBox="0 0 32 32" aria-hidden="true">
+		<path d="M30.3 9.8s-.3-2.1-1.2-3c-1.1-1.2-2.4-1.2-3-1.3C21.9 5.2 16 5.2 16 5.2h-.01s-5.9 0-10.1.3c-.6.1-1.9.1-3 1.3-.9.9-1.2 3-1.2 3S1.4 12.3 1.4 14.8v2.4c0 2.5.3 5 .3 5s.3 2.1 1.2 3c1.1 1.2 2.6 1.2 3.3 1.3 2.4.2 9.8.3 9.8.3s5.9 0 10.1-.3c.6-.1 1.9-.1 3-1.3.9-.9 1.2-3 1.2-3s.3-2.5.3-5v-2.4c0-2.5-.3-5-.3-5ZM13.2 20.2v-8.7l7.7 4.4-7.7 4.3Z"/>
+	  </svg>
+	</a>
+  </div>
 
-            // Cálculos de días, horas, minutos y segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Muestra el resultado en el elemento con id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            // Si la cuenta ha terminado, mostrar un mensaje
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "¡El nuevo video ya está disponible!";
-            }
-        }, 1000);
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
