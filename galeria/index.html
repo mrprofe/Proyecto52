@@ -1,148 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 52 - Galería de Videos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://raw.githubusercontent.com/mrprofe/Proyecto52/main/vecteezy_blue-artificial-intelligence-technology-background-hd_17744080.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5em;
-        }
-
-        .descripcion {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
-            margin: 20px;
-            border-radius: 10px;
-        }
-
-        .mosaico {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .video {
-            position: relative;
-            background-color: rgba(255, 160, 122, 0.8); /* Fondo blanco semi-transparente */
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        /* Superposición para deshabilitar el video */
-        .video .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* Estilos del iframe */
-        .video iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-            border-radius: 8px;
-            filter: grayscale(100%); /* Efecto de video deshabilitado */
-        }
-
-        /* Estilo para el video habilitado */
-        .video.habilitado iframe {
-            filter: none; /* Sin filtro para video habilitado */
-        }
-
-        /* Título del video */
-        .video-title {
-            margin-top: 10px;
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #ffeb3b; /* Color amarillo llamativo */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .autor {
-            text-align: center;
-            margin: 40px 0;
-            font-size: 1.2em;
-        }
-
-        .contador {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 160, 122, 0.9); /* Color llamativo */
-            border-radius: 8px;
-            margin: 20px;
-            font-size: 1.5em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        #countdown {
-            font-size: 2em;
-            color: #ff5722; /* Color más llamativo para el texto del contador */
-            font-weight: bold;
-        }
-
-        /* Estilos para los iconos de redes sociales */
-        .social-links {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .social-links img {
-            width: 40px;
-            height: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto 52 | Galería de Videos</title>
+  <meta name="description" content="Galería oficial de episodios del Proyecto 52: una ruta semanal desde bases de datos hasta inteligencia artificial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --bg-soft: #07111f;
+      --panel: rgba(8, 19, 36, 0.76);
+      --panel-strong: rgba(10, 26, 48, 0.92);
+      --text: #f8fbff;
+      --muted: #a7bdd2;
+      --blue: #00a8ff;
+      --blue-2: #004dff;
+      --orange: #ffb000;
+      --orange-2: #ff7a00;
+      --border: rgba(255,255,255,0.12);
+      --shadow-blue: 0 0 40px rgba(0,168,255,0.35);
+      --shadow-orange: 0 0 40px rgba(255,176,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .site-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,176,0,0.18), transparent 26%),
+        radial-gradient(circle at 80% 15%, rgba(0,168,255,0.18), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(0,78,255,0.2), transparent 34%),
+        #030712;
+    }
+    .site-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(0,168,255,.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,176,0,.15) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 85%, transparent);
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px clamp(20px, 5vw, 72px);
+      background: rgba(3, 7, 18, .72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: .3px; }
+    .brand img { width: 42px; height: 42px; border-radius: 12px; box-shadow: var(--shadow-blue); object-fit: cover; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 14px; font-weight: 700; }
+    .nav-links a:hover { color: var(--orange); }
+    .section-pad { padding: 82px clamp(20px, 5vw, 72px); }
+    .hero {
+      min-height: 74vh;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .eyebrow { color: var(--orange); text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 900; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(42px, 7vw, 82px); line-height: .96; letter-spacing: -0.06em; margin: 18px 0 24px; }
+    h2 { font-size: clamp(26px, 4vw, 44px); line-height: 1; letter-spacing: -0.04em; margin: 48px clamp(20px,5vw,72px) 22px; }
+    h2::before { content: '🔥'; margin-right: 10px; filter: drop-shadow(0 0 12px rgba(255,122,0,.55)); }
+    p { color: var(--muted); line-height: 1.75; font-size: 17px; }
+    .hero-content > p { max-width: 760px; font-size: 20px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 900; border: 1px solid var(--border); }
+    .btn.primary { color: #07111f; background: linear-gradient(135deg, var(--orange), #ffe17a); box-shadow: var(--shadow-orange); }
+    .btn.secondary { color: var(--text); background: rgba(255,255,255,.06); }
+    .hero-card {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 390px;
+      border-radius: 36px;
+      background: radial-gradient(circle, rgba(0,168,255,.16), rgba(255,176,0,.08), transparent 68%);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .hero-card::before {
+      content:'';
+      position:absolute;
+      width:86%;
+      aspect-ratio:1;
+      border-radius:50%;
+      border: 2px solid rgba(255,176,0,.35);
+      box-shadow: inset 0 0 50px rgba(0,168,255,.24), 0 0 50px rgba(255,176,0,.18);
+      animation: spin 16s linear infinite;
+    }
+    .hero-card img { width: min(78%, 350px); border-radius: 34px; position: relative; z-index: 2; filter: drop-shadow(0 0 38px rgba(0,168,255,.5)); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .descripcion {
+      max-width: 1100px;
+      margin: -30px auto 34px;
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(90deg, rgba(0,168,255,.16), rgba(255,176,0,.12));
+      box-shadow: var(--shadow-blue);
+    }
+    .descripcion p { margin-bottom: 12px; }
+    .contador {
+      max-width: 860px;
+      margin: 20px auto 44px;
+      text-align: center;
+      padding: 28px 30px;
+      border: 1px solid rgba(255,176,0,.4);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,122,0,.28), transparent 36%),
+        var(--panel);
+      box-shadow: var(--shadow-orange);
+    }
+    .contador p { margin: 0 0 8px; color: var(--text); font-weight: 900; }
+    #countdown { font-size: clamp(30px, 6vw, 54px); font-weight: 900; color: var(--orange); text-shadow: 0 0 26px rgba(255,122,0,.65); }
+    .capitulo { padding-bottom: 40px; }
+    .mosaico {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+      padding: 0 clamp(20px, 5vw, 72px) 8px;
+    }
+    .video {
+      position: relative;
+      min-height: 330px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .video:hover { transform: translateY(-5px); border-color: rgba(255,176,0,.5); box-shadow: 0 0 32px rgba(0,168,255,.18), 0 18px 60px rgba(0,0,0,.32); }
+    .video::after {
+      content:'';
+      position:absolute;
+      inset:auto -30% -45% auto;
+      width:210px;
+      aspect-ratio:1;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(0,168,255,.18), transparent 68%);
+      pointer-events: none;
+    }
+    .video iframe {
+      width: 100%;
+      height: 205px;
+      border: none;
+      border-radius: 18px;
+      filter: grayscale(100%) brightness(.65);
+      position: relative;
+      z-index: 1;
+    }
+    .video.habilitado iframe { filter: none; }
+    .video-title {
+      margin: 16px 6px 4px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.45;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+    .video-title::before {
+      content: '▶';
+      color: var(--orange);
+      margin-right: 8px;
+      text-shadow: 0 0 16px rgba(255,176,0,.65);
+    }
+    .overlay {
+      position: absolute;
+      inset: 14px 14px auto 14px;
+      height: 205px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #140900;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, rgba(255,122,0,.9), rgba(255,225,122,.92));
+      z-index: 3;
+      box-shadow: 0 0 26px rgba(255,122,0,.35);
+    }
+    .social-links {
+      max-width: 760px;
+      margin: 30px auto 70px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--panel);
+    }
+    .social-links a {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .25s ease, background .25s ease;
+    }
+    .social-links a:hover { transform: translateY(-4px); background: rgba(255,176,0,.16); }
+    .social-links img { width: 30px; height: 30px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(255,255,255,.18)); }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 34px clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .footer div { display: flex; align-items: center; gap: 14px; }
+    .footer img { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-card { min-height: 300px; }
+      .nav-links { justify-content: flex-end; }
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 42px; }
+      h2 { margin-left: 20px; margin-right: 20px; }
+      .mosaico { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <h1><strong>Proyecto 52</strong>: Serie semanal para aprender sobre Datos</h1>
-    
-    <div class="descripcion">
-        <p>Proyecto 52 es un recorrido educativo desde las bases de datos hasta la inteligencia artificial. Cada semana se exploran temas clave para comprender cómo los datos impulsan soluciones avanzadas en IA.</p>
-        <p>El proyecto abarca desde la gestión de datos en sistemas relacionales y NoSQL, hasta la manipulación y análisis de datos con herramientas como SQL, Python y R.</p>
-        <p>Se exploran técnicas de minería de datos y aprendizaje automático para extraer patrones y crear modelos predictivos. Finalmente, el proyecto aborda los últimos avances en inteligencia artificial, como redes neuronales y procesamiento de lenguaje natural.</p>
-    </div>
+  <div class="site-bg"></div>
 
-    <!-- Contador regresivo -->
-    <div class="contador">
-        <p>Próximo video en:</p>
-        <div id="countdown">Cargando...</div>
-    </div>
+  <header class="navbar">
+    <a href="../" class="brand">
+      <img src="../logo-proyecto52.png" alt="Logo Proyecto 52" />
+      <span>Proyecto 52</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../">Inicio</a>
+      <a href="#galeria">Galería</a>
+      <a href="https://www.youtube.com/@proyecto52" target="_blank" rel="noopener">YouTube</a>
+    </nav>
+  </header>
 
+  <main id="galeria">
+    <section class="hero section-pad">
+      <div class="hero-content">
+        <span class="eyebrow">Galería oficial</span>
+        <h1>Todos los episodios del Proyecto 52 en un solo lugar.</h1>
+        <p>Explora visualmente la ruta completa: desde bases de datos, SQL y Python hasta machine learning, deep learning, NLP e inteligencia artificial.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#capitulos">Ver episodios</a>
+          <a class="btn secondary" href="../">Volver al site principal</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="../logo-proyecto52.png" alt="Proyecto 52" />
+      </div>
+    </section>
+
+    <section class="contador" aria-label="Contador del próximo episodio">
+      <p>Próximo video en:</p>
+      <div id="countdown">Cargando...</div>
+    </section>
+
+    <div id="capitulos"></div>
     <div class="capitulo">
         <h2>Capítulo 1: Fundamentos de Bases de Datos</h2>
         <div class="mosaico">
@@ -422,55 +573,37 @@
         
     </div>
 
-    <!-- Enlaces a redes sociales -->
-    <div class="social-links">
-        <a href="https://t.me/+u7_raiR8TmE5M2Vh" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-        </a>  
-        <a href="https://chat.whatsapp.com/GeoBYG30ymcKgDn4mIzd7h" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
-        <a href="https://www.linkedin.com/in/pr-martinez/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
-        </a>
-        <a href="https://www.youtube.com/playlist?list=PL0b8WvDs4r87WCCUGWnWGvCU67mt0WCJf" target="_blank">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
-        </a>
 
-        <a href="https://www.instagram.com/proyecto52oficial/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <img src="../logo-proyecto52.png" alt="Proyecto 52" />
+      <p>Proyecto 52 · Galería de videos</p>
     </div>
+    <a href="#galeria">Volver arriba ↑</a>
+  </footer>
 
-    <!-- Script del contador regresivo -->
-    <script>
-       
-        var countdownDate = new Date("Mar 24, 2026 12:00:00").getTime();
+  <script>
+    // Edita esta fecha según el próximo episodio.
+    var countdownDate = new Date("Jun 28, 2026 11:00:00").getTime();
 
-        // Actualiza el contador cada 1 segundo
-        var x = setInterval(function() {
-            // Obtiene la fecha y hora actual
-            var now = new Date().getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countdownDate - now;
 
-            // Calcula la diferencia entre la fecha actual y la fecha de destino
-            var distance = countdownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Cálculos de días, horas, minutos y segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-            // Muestra el resultado en el elemento con id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            // Si la cuenta ha terminado, mostrar un mensaje
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "¡El nuevo video ya está disponible!";
-            }
-        }, 1000);
-    </script>
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "¡El nuevo video ya está disponible!";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
