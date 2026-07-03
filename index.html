@@ -2,14 +2,28 @@
 <html lang="es">
 <head>
 <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ESW1Y53Q6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+
   gtag('js', new Date());
 
-  gtag('config', 'G-8ESW1Y53Q6');
-	
+  // Page view automático
+  gtag('config', 'G-8ESW1Y53Q6', {
+    send_page_view: true
+  });
+
+  // Evento personalizado al cargar la página
+  window.addEventListener('load', function () {
+    gtag('event', 'site_visit', {
+      event_category: 'engagement',
+      event_label: 'entrada_al_site',
+      page_title: document.title,
+      page_location: window.location.href
+    });
+  });
 </script>	
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
