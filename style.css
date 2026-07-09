@@ -468,3 +468,57 @@ small { color: var(--muted); }
   max-width: 620px;
   margin: 0 auto 24px;
 }
+
+#juego-52 .section-header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+#juego-52 .section-header p {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#juego-52 .eyebrow {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.game-home-card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 32px;
+  border-radius: 24px;
+  background: rgba(8, 18, 38, 0.78);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 229, 255, 0.12);
+}
+
+.game-home-card h3 {
+  margin-bottom: 12px;
+}
+
+.game-home-card p {
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #101827;
+  border: 1px solid rgba(255, 214, 80, 0.8);
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.28);
+  font-weight: 800;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px rgba(245, 158, 11, 0.38);
+}
