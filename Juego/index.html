@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyecto 52: Caballeros de los Datos. Recorre las 13 casas del Proyecto 52 y convierte datos en inteligencia." />
+  <title>Proyecto 52 | Caballeros de los Datos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="p52-bg" aria-hidden="true">
+    <span class="orb orb-blue"></span>
+    <span class="orb orb-gold"></span>
+    <span class="grid-lines"></span>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Volver a Proyecto 52">
+      <img src="assets/logo-proyecto52.png" alt="Logo Proyecto 52" />
+      <span>
+        <strong>Proyecto 52</strong>
+        <small>Caballeros de los Datos</small>
+      </span>
+    </a>
+
+    <nav class="nav-actions" aria-label="Navegación del juego">
+      <a href="../" class="ghost-link">Inicio</a>
+      <a href="../#catalogo" class="ghost-link">Catálogo</a>
+      <button id="resetGameBtn" class="ghost-link danger" type="button">Reiniciar</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-panel" id="inicio-juego">
+      <div class="hero-copy">
+        <p class="eyebrow">Proyecto 52 · Ruta gamificada</p>
+        <h1>Caballeros de los Datos</h1>
+        <p class="lead">
+          Cruza las 13 Casas del Conocimiento, supera 52 pruebas y despierta el
+          <strong>Cosmo de la Inteligencia</strong>: la capacidad de transformar datos en decisiones reales.
+        </p>
+
+        <div class="player-box" id="playerBox">
+          <label for="playerName">Nombre del aspirante</label>
+          <div class="player-form">
+            <input id="playerName" type="text" maxlength="24" placeholder="Ej.: Persio, Data Knight, Ana" />
+            <button id="saveNameBtn" type="button">Iniciar aventura</button>
+          </div>
+          <small>Tu avance se guarda en este navegador usando localStorage.</small>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#mapa" class="primary-cta">Entrar al santuario</a>
+          <button id="demoModeBtn" class="secondary-cta" type="button" title="Habilita todas las casas para probar el juego completo.">Modo prueba: OFF</button>
+        </div>
+      </div>
+
+      <aside class="artifact-card" aria-label="Estado del jugador">
+        <div class="logo-glow">
+          <img src="assets/logo-proyecto52.png" alt="Logo Proyecto 52" />
+        </div>
+        <div class="rank" id="rankTitle">Aprendiz de Datos</div>
+        <div class="stats-grid" id="statsGrid"></div>
+      </aside>
+    </section>
+
+    <section class="story-card">
+      <p class="eyebrow">La historia</p>
+      <h2>La Niebla del Ruido ha caído sobre el Santuario Analítico</h2>
+      <p>
+        Tablas duplicadas, datos nulos, modelos que memorizan, sesgos ocultos y automatizaciones sin criterio
+        amenazan con romper la ruta del conocimiento. Solo quienes completen las 13 casas podrán restaurar el
+        equilibrio y convertirse en Guardianes de la Inteligencia.
+      </p>
+    </section>
+
+    <section class="map-section" id="mapa">
+      <div class="section-title">
+        <p class="eyebrow">Mapa de avance</p>
+        <h2>Las 13 Casas del Proyecto 52</h2>
+        <p>Completa las misiones de cada casa para desbloquear la siguiente. El mapa ahora no usa barra horizontal: todas las casas se organizan como tarjetas responsivas.</p>
+      </div>
+      <div class="progress-shell">
+        <div class="progress-top">
+          <span id="progressLabel">0 / 52 pruebas superadas</span>
+          <span id="houseLabel">0 / 13 casas conquistadas</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div>
+      </div>
+      <div class="houses-grid" id="housesGrid" aria-label="Mapa de las 13 casas"></div>
+    </section>
+
+    <section class="active-panel" id="activePanel" aria-live="polite">
+      <div class="empty-state">
+        <h2>Selecciona una casa para iniciar la misión.</h2>
+        <p>La primera casa ya está abierta. Las demás se desbloquean al conquistar la anterior.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
 
