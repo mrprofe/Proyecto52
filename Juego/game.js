@@ -1,6 +1,6 @@
 const STORAGE_KEY = "proyecto52_caballeros_datos_v2";
-const PUBLISHED_MISSIONS = 36;
-const MAX_ENABLED_CHAPTER = 9;
+const PUBLISHED_MISSIONS = 40;
+const MAX_ENABLED_CHAPTER = 10;
 
 const EPISODE_URLS = {
   1: "https://youtu.be/8E3lHhg3xOQ",
@@ -47,6 +47,11 @@ const EPISODE_URLS = {
  34: "https://youtu.be/TIgDj-ddZ1Y",
  35: "https://youtu.be/Von-R2uDJSQ",
  36: "https://youtu.be/IgQvc5XMUk8",
+
+ 37: "https://youtu.be/Qn4OwmDB4OA",
+ 38: "https://youtu.be/IMMus8PlTyc",
+ 39: "https://youtu.be/lDv7RCvTC9o",
+ 40: "https://youtu.be/eMhPVaYzvsI",
 
 };
 
