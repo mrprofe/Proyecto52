@@ -522,3 +522,18 @@ small { color: var(--muted); }
   transform: translateY(-2px);
   box-shadow: 0 16px 38px rgba(245, 158, 11, 0.38);
 }
+.course-card.locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+    position: relative;
+}
+
+.course-card.locked::after {
+    content: "🔒 Próximamente";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
