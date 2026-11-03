@@ -32,6 +32,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Newsletter 52: estilos encapsulados para no alterar el sitio actual */
+    .n52-section { position:relative; padding:76px 20px; }
+    .n52-wrap { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(290px,.75fr); gap:28px; align-items:stretch; }
+    .n52-feature { position:relative; overflow:hidden; border:1px solid rgba(106,165,255,.32); border-radius:26px; padding:clamp(28px,4.5vw,58px); background:radial-gradient(circle at 95% 0%,rgba(40,130,255,.26),transparent 40%),linear-gradient(135deg,#07162d,#102951 70%,#071a36); box-shadow:0 22px 60px rgba(0,0,0,.18); color:#fff; }
+    .n52-feature:after { content:'52'; position:absolute; right:-13px; bottom:-85px; font-size:250px; font-weight:900; line-height:1; color:rgba(126,185,255,.065); pointer-events:none; }
+    .n52-eyebrow { display:inline-flex; align-items:center; gap:9px; padding:8px 13px; border:1px solid rgba(147,197,253,.35); border-radius:50px; color:#93c5fd; background:rgba(37,99,235,.12); font-size:12px; text-transform:uppercase; font-weight:800; letter-spacing:1.4px; }
+    .n52-dot { width:8px; height:8px; background:#60a5fa; border-radius:50%; box-shadow:0 0 0 5px rgba(96,165,250,.15); }
+    .n52-feature h2 { position:relative; z-index:1; margin:28px 0 16px; max-width:680px; font-size:clamp(30px,4vw,51px); line-height:1.12; color:#fff; letter-spacing:-1.3px; }
+    .n52-feature p { position:relative; z-index:1; max-width:660px; color:#c8d7ed; line-height:1.8; font-size:16px; }
+    .n52-points { position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 30px; }
+    .n52-points span { display:inline-block; padding:9px 12px; border:1px solid rgba(147,197,253,.17); background:rgba(255,255,255,.055); border-radius:12px; color:#dceafa; font-size:13px; }
+    .n52-actions { position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+    .n52-button { display:inline-flex; justify-content:center; align-items:center; gap:10px; padding:15px 22px; background:#0a66c2; color:white!important; text-decoration:none; border-radius:13px; font-weight:800; transition:transform .2s ease,background .2s ease,box-shadow .2s ease; }
+    .n52-button:hover { background:#0c7ddd; transform:translateY(-2px); box-shadow:0 10px 24px rgba(10,102,194,.28); }
+    .n52-button:focus-visible,.n52-secondary:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
+    .n52-in { display:inline-flex; align-items:center; justify-content:center; width:25px; height:25px; border-radius:5px; background:white; color:#0a66c2; font-weight:900; font-family:Arial,sans-serif; font-size:19px; letter-spacing:-1px; }
+    .n52-note { font-size:12px; color:#aabed9; }
+    .n52-preview { display:flex; flex-direction:column; gap:16px; padding:30px; border-radius:26px; border:1px solid rgba(139,165,206,.23); background:linear-gradient(150deg,#142b50,#0b1c38); color:#fff; }
+    .n52-preview-tag { align-self:flex-start; color:#a5c9ff; font-size:11px; letter-spacing:1.3px; text-transform:uppercase; font-weight:800; }
+    .n52-art { min-height:145px; display:flex; align-items:center; justify-content:center; border-radius:18px; background:radial-gradient(circle at 50% 50%,rgba(60,140,255,.35),transparent 55%),repeating-linear-gradient(45deg,rgba(99,169,255,.07) 0 1px,transparent 1px 20px),#081832; }
+    .n52-art svg { width:98px; height:98px; opacity:.9; }
+    .n52-preview h3 { margin:0; color:white; font-size:25px; line-height:1.25; }
+    .n52-preview p { margin:0; font-size:14px; color:#c6d5e9; line-height:1.7; }
+    .n52-secondary { margin-top:auto; align-self:flex-start; color:#9dccff!important; font-weight:800; text-decoration:none; border-bottom:1px solid rgba(157,204,255,.5); padding-bottom:4px; }
+    .n52-preview small { color:#96afd0; }
+    @media(max-width:850px) { .n52-wrap { grid-template-columns:1fr; } .n52-section { padding:50px 16px; } .n52-preview { padding:24px; } }
+    @media(prefers-reduced-motion:reduce) { .n52-button { transition:none; } }
+  </style>
 </head>
 <body>
   <div class="site-bg"></div>
@@ -50,6 +80,7 @@
       <a href="#empieza">Empieza aquí</a>
       <a href="#ruta">Ruta</a>
       <a href="#recursos">Recursos</a>
+      <a href="#newsletter">Newsletter</a>
       <a href="#canales">Canales</a>
       <a href="#site-actual">Galería</a>
 	  <a href="#juego-52">⚔️ Juego 52</a>
@@ -111,6 +142,39 @@
           <span>11</span>
           <i></i><i></i><i></i>
         </div>
+      </div>
+    </section>
+
+
+    <!-- NEWSLETTER 52: la suscripción se gestiona directamente en LinkedIn -->
+    <section id="newsletter" class="n52-section" aria-labelledby="n52-title">
+      <div class="n52-wrap">
+        <div class="n52-feature reveal">
+          <span class="n52-eyebrow"><span class="n52-dot" aria-hidden="true"></span> Newsletter 52 · En LinkedIn</span>
+          <h2 id="n52-title">Una semana más.<br>Un conocimiento nuevo.</h2>
+          <p>Los videos son solo el comienzo. Cada semana seguimos aprendiendo con explicaciones sencillas, ejemplos prácticos, reflexiones y recursos sobre datos, programación e inteligencia artificial. Todo en el newsletter de Proyecto 52.</p>
+          <div class="n52-points" aria-label="Qué encontrarás">
+            <span>✦ Ideas que se entienden</span>
+            <span>✦ Ejemplos prácticos</span>
+            <span>✦ Nuevas ediciones</span>
+          </div>
+          <div class="n52-actions">
+            <a class="n52-button" href="https://www.linkedin.com/newsletters/proyecto-52-datos-e-ia-7483296924754747392" target="_blank" rel="noopener noreferrer" data-newsletter-click="suscripcion">
+              <span class="n52-in" aria-hidden="true">in</span> Suscribirme gratis en LinkedIn ↗
+            </a>
+            <span class="n52-note">Sin formularios ni correos adicionales en esta web.</span>
+          </div>
+        </div>
+        <article class="n52-preview reveal delay-1" aria-label="Edición destacada del newsletter">
+          <span class="n52-preview-tag">Para empezar a leer · Edición 16</span>
+          <div class="n52-art" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="49" stroke="#7db9ff" stroke-width="2" stroke-dasharray="5 7"/><path d="M18 79L38 58L54 70L75 34L100 46" stroke="#80c4ff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="38" cy="58" r="6" fill="#80c4ff"/><circle cx="54" cy="70" r="6" fill="#80c4ff"/><circle cx="75" cy="34" r="6" fill="#80c4ff"/><path d="M20 98H100" stroke="#4b87cc" stroke-width="2"/></svg>
+          </div>
+          <h3>Pruebas de Hipótesis y Significancia Estadística</h3>
+          <p>¿Una diferencia es realmente importante o apareció por casualidad? Descubre cómo pensar los resultados con criterio estadístico.</p>
+          <small>27 de octubre de 2026 · Newsletter Proyecto 52</small>
+          <a class="n52-secondary" href="https://es.linkedin.com/pulse/pruebas-de-hip%C3%B3tesis-y-significancia-estad%C3%ADstica-martinez-alvarado-9bwye" target="_blank" rel="noopener noreferrer" data-newsletter-click="lectura">Leer esta edición ↗</a>
+        </article>
       </div>
     </section>
 
@@ -388,6 +452,22 @@
 	  </svg>
 	</a>
   </div>
+
+
+  <script>
+    // Registra clics de salida en GA4, sin recopilar correos ni credenciales.
+    document.querySelectorAll('[data-newsletter-click]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_click', {
+            event_category: 'engagement',
+            event_label: link.getAttribute('data-newsletter-click'),
+            link_url: link.href
+          });
+        }
+      });
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
