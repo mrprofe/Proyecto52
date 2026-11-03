@@ -54,7 +54,13 @@
     .n52-preview { display:flex; flex-direction:column; gap:16px; padding:30px; border-radius:26px; border:1px solid rgba(139,165,206,.23); background:linear-gradient(150deg,#142b50,#0b1c38); color:#fff; }
     .n52-preview-tag { align-self:flex-start; color:#a5c9ff; font-size:11px; letter-spacing:1.3px; text-transform:uppercase; font-weight:800; }
     .n52-art { min-height:145px; display:flex; align-items:center; justify-content:center; border-radius:18px; background:radial-gradient(circle at 50% 50%,rgba(60,140,255,.35),transparent 55%),repeating-linear-gradient(45deg,rgba(99,169,255,.07) 0 1px,transparent 1px 20px),#081832; }
-    .n52-art svg { width:98px; height:98px; opacity:.9; }
+    .n52-art { position:relative; overflow:hidden; min-height:unset; aspect-ratio:16/9; background:#07172e; }
+    .n52-cover { display:block; width:100%; height:100%; position:absolute; inset:0; object-fit:cover; object-position:center; }
+    .n52-cover-fallback { display:none; width:100%; height:100%; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:18px; text-align:center; color:#c8e4ff; background:radial-gradient(circle at center,#214879,#081831 78%); }
+    .n52-art-fallback .n52-cover-fallback { display:flex; }
+    .n52-cover-fallback span { font-size:11px; font-weight:800; letter-spacing:2px; }
+    .n52-cover-fallback strong { color:#e5f4ff; font-size:68px; line-height:1; }
+    .n52-cover-fallback small { color:#c5d9f2; font-size:12px; }
     .n52-preview h3 { margin:0; color:white; font-size:25px; line-height:1.25; }
     .n52-preview p { margin:0; font-size:14px; color:#c6d5e9; line-height:1.7; }
     .n52-secondary { margin-top:auto; align-self:flex-start; color:#9dccff!important; font-weight:800; text-decoration:none; border-bottom:1px solid rgba(157,204,255,.5); padding-bottom:4px; }
@@ -166,14 +172,24 @@
           </div>
         </div>
         <article class="n52-preview reveal delay-1" aria-label="Edición destacada del newsletter">
-          <span class="n52-preview-tag">Para empezar a leer · Edición 16</span>
-          <div class="n52-art" aria-hidden="true">
-            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="49" stroke="#7db9ff" stroke-width="2" stroke-dasharray="5 7"/><path d="M18 79L38 58L54 70L75 34L100 46" stroke="#80c4ff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="38" cy="58" r="6" fill="#80c4ff"/><circle cx="54" cy="70" r="6" fill="#80c4ff"/><circle cx="75" cy="34" r="6" fill="#80c4ff"/><path d="M20 98H100" stroke="#4b87cc" stroke-width="2"/></svg>
+          <span class="n52-preview-tag">Nueva publicación · Edición 17</span>
+          <div class="n52-art" aria-label="Portada de la edición 17: Regresión Lineal Básica">
+            <!-- Portada original publicada en LinkedIn. Si la URL caduca, se muestra el respaldo. -->
+            <img
+              class="n52-cover"
+              src="https://media.licdn.com/dms/image/v2/D4E12AQHNn7iARCSwKA/article-cover_image-shrink_720_1280/B4EaGhdWzgGwAQ-/0/1793710194374?e=2147483647&amp;t=WlYEVYqYXevoDfknNHFK54M_12jpgjWKAzCg6y4MrT0&amp;v=beta"
+              alt="Portada de Proyecto 52, Newsletter edición 17: Regresión Lineal Básica"
+              loading="lazy"
+              decoding="async"
+              referrerpolicy="no-referrer"
+              onerror="this.hidden=true; this.parentElement.classList.add('n52-art-fallback');"
+            />
+            <div class="n52-cover-fallback" aria-hidden="true"><span>PROYECTO 52</span><strong>17</strong><small>Regresión Lineal Básica</small></div>
           </div>
-          <h3>Pruebas de Hipótesis y Significancia Estadística</h3>
-          <p>¿Una diferencia es realmente importante o apareció por casualidad? Descubre cómo pensar los resultados con criterio estadístico.</p>
-          <small>27 de octubre de 2026 · Newsletter Proyecto 52</small>
-          <a class="n52-secondary" href="https://es.linkedin.com/pulse/pruebas-de-hip%C3%B3tesis-y-significancia-estad%C3%ADstica-martinez-alvarado-9bwye" target="_blank" rel="noopener noreferrer" data-newsletter-click="lectura">Leer esta edición ↗</a>
+          <h3>Edición 17 · Regresión Lineal Básica</h3>
+          <p>Descubre cómo la regresión lineal permite analizar relaciones entre variables y hacer predicciones. Exploramos la pendiente, los residuos, mínimos cuadrados y métricas como R² y MSE, con ejemplos prácticos en Python.</p>
+          <small>Newsletter Proyecto 52 · 3 de noviembre de 2026</small>
+          <a class="n52-secondary" href="https://www.linkedin.com/pulse/regresi%C3%B3n-lineal-b%C3%A1sica-persio-rafael-martinez-alvarado-znaoe" target="_blank" rel="noopener noreferrer" data-newsletter-click="lectura">Ver edición 17 en LinkedIn ↗</a>
         </article>
       </div>
     </section>
